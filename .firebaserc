@@ -1,0 +1,5 @@
+{
+  "projects": {
+    "default": "expressjs-cloudfunctions-api"
+  }
+}
