@@ -16,7 +16,7 @@ app.use(cors({ origin: true }));
 
 //use app to create route with request (req) and response (res)
 //
-app.get('/hello-world', function (req, res) {
+app.get('/hello-world', (req, res) => {
     return res.status(200).send('Hello World! and better');
 });
 
@@ -65,7 +65,7 @@ app.get('/api/read/:id', (req, res) => {
 
 
 // read all
-app.get('/api/read', function(req, res) {
+app.get('/api/read', (req, res) => {
     (async () => {
         try {
             let query = db.collection('products');
