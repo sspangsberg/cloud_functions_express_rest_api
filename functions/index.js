@@ -14,8 +14,10 @@ const cors = require('cors');
 const app = express();
 app.use(cors({ origin: true }));
 
-app.get('/hello-world', (req, res) => {
-    return res.status(200).send('Hello World!');
+//use app to create route with request (req) and response (res)
+//
+app.get('/hello-world', function (req, res) {
+    return res.status(200).send('Hello World! and better');
 });
 
 
@@ -43,14 +45,17 @@ app.post('/api/create', (req, res) => {
 
 // read item
 app.get('/api/read/:id', (req, res) => {
-    (async () => {
-        try {
+    (async () => 
+    {
+        try 
+        {
             const document = db.collection('products').doc(req.params.id);
             let product = await document.get();
             let response = product.data();
             return res.status(200).send(response);
         }
-        catch (error) {
+        catch (error) 
+        {
             console.log(error);
             return res.status(500).send(error);
         }
@@ -60,7 +65,7 @@ app.get('/api/read/:id', (req, res) => {
 
 
 // read all
-app.get('/api/read', (req, res) => {
+app.get('/api/read', function(req, res) {
     (async () => {
         try {
             let query = db.collection('products');
