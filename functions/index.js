@@ -42,7 +42,6 @@ app.post('/api/create', (req, res) => {
 });
 
 
-
 // read item
 app.get('/api/read/:id', (req, res) => {
     (async () => 
@@ -61,7 +60,6 @@ app.get('/api/read/:id', (req, res) => {
         }
     })();
 });
-
 
 
 // read all
@@ -93,21 +91,6 @@ app.get('/api/read', (req, res) => {
 });
 
 
-// delete
-app.delete('/api/delete/:id', (req, res) => {
-    (async () => {
-        try {
-            const document = db.collection('products').doc(req.params.id);
-            await document.delete();
-            return res.status(200).send();
-        } catch (error) {
-            console.log(error);
-            return res.status(500).send(error);
-        }
-    })();
-});
-
-
 // update
 app.put('/api/update/:id', (req, res) => {
     (async () => {
@@ -125,6 +108,24 @@ app.put('/api/update/:id', (req, res) => {
         }
     })();
 });
+
+
+// delete
+app.delete('/api/delete/:id', (req, res) => {
+    (async () => {
+        try {
+            const document = db.collection('products').doc(req.params.id);
+            await document.delete();
+            return res.status(200).send();
+        } catch (error) {
+            console.log(error);
+            return res.status(500).send(error);
+        }
+    })();
+});
+
+
+
 
 
 
