@@ -6,22 +6,24 @@ admin.initializeApp({
     databaseURL: "https://expressjs-cloudfunctions-api.firebaseio.com"
 });
 
+// Setup app dependencies
 const db = admin.firestore();
-
 const functions = require('firebase-functions');
 const express = require('express');
+const app = express(); //create ExpressJS app
+
+// Automatically allow cross-origin requests
 const cors = require('cors');
-const app = express();
 app.use(cors({ origin: true }));
 
 //use app to create route with request (req) and response (res)
-//
+// Basic test route
 app.get('/hello-world', (req, res) => {
     return res.status(200).send('Hello World! and better');
 });
 
 
-// create
+// Create
 app.post('/api/create', (req, res) => {
     (async () => {
         try {
@@ -42,8 +44,7 @@ app.post('/api/create', (req, res) => {
 });
 
 
-
-// read item
+// Read item
 app.get('/api/read/:id', (req, res) => {
     (async () => 
     {
@@ -63,8 +64,7 @@ app.get('/api/read/:id', (req, res) => {
 });
 
 
-
-// read all
+// Read all
 app.get('/api/read', (req, res) => {
     (async () => {
         try {
@@ -93,22 +93,7 @@ app.get('/api/read', (req, res) => {
 });
 
 
-// delete
-app.delete('/api/delete/:id', (req, res) => {
-    (async () => {
-        try {
-            const document = db.collection('products').doc(req.params.id);
-            await document.delete();
-            return res.status(200).send();
-        } catch (error) {
-            console.log(error);
-            return res.status(500).send(error);
-        }
-    })();
-});
-
-
-// update
+// Update
 app.put('/api/update/:id', (req, res) => {
     (async () => {
         try {
@@ -127,5 +112,21 @@ app.put('/api/update/:id', (req, res) => {
 });
 
 
+// Delete
+app.delete('/api/delete/:id', (req, res) => {
+    (async () => {
+        try {
+            const document = db.collection('products').doc(req.params.id);
+            await document.delete();
+            return res.status(200).send();
+        } catch (error) {
+            console.log(error);
+            return res.status(500).send(error);
+        }
+    })();
+});
 
+
+
+//Expose our CRUD app as a single Cloud Function :)
 exports.app = functions.https.onRequest(app);
