@@ -50,7 +50,7 @@ app.get('/api/read/:id', (req, res) => {
     {
         try 
         {
-            const document = db.collection('products').doc(req.params.id);
+            const document = db.collection('products').doc(req.params.id); 
             let product = await document.get();
             let response = product.data();
             return res.status(200).send(response);
@@ -71,8 +71,8 @@ app.get('/api/read', (req, res) => {
             let query = db.collection('products');
             let response = [];
             await query.get().then(querySnapshot => {
-                let docs = querySnapshot.docs;
-                for (let doc of docs) {
+                let docs = querySnapshot.docs; //the result of our query
+                for (let doc of docs) { //add each doc to our JSON response
                     const selectedItem = {
                         id: doc.id,
                         name: doc.data().name,
@@ -81,9 +81,9 @@ app.get('/api/read', (req, res) => {
                     };
                     response.push(selectedItem);
                 }
-                return response;
+                return response; //each then should return a value
             });
-            return res.status(200).send(response);
+            return res.status(200).send(response); //end of async function should return a value
         }
         catch (error) {
             console.log(error);

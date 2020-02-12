@@ -10,6 +10,10 @@ export class AppComponent {
   exampleProducts = [];
 
 
+  ngOnInit() {   
+    this.selectAll();
+  }
+
   async selectAll() {
     try {
       console.log(environment.readAll);
@@ -110,7 +114,14 @@ export class AppComponent {
     }
   }
 
-  createProduct() {
+  createProduct() {    
+
+    for(var item in this.exampleProducts){
+      console.log(item)
+  }
+    
+    
+    
     this.exampleProducts.push({
       id: '',
       name: '',
