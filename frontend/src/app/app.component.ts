@@ -116,12 +116,6 @@ export class AppComponent {
 
   createProduct() {    
 
-    for(var item in this.exampleProducts){
-      console.log(item)
-  }
-    
-    
-    
     this.exampleProducts.push({
       id: '',
       name: '',
