@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  create: 'https://us-central1-expressjs-cloudfunctions-api.cloudfunctions.net/app/api/create',
-  readId: 'https://us-central1-expressjs-cloudfunctions-api.cloudfunctions.net/app/api/read/',
-  readAll: 'https://us-central1-expressjs-cloudfunctions-api.cloudfunctions.net/app/api/read',
-  update: 'https://us-central1-expressjs-cloudfunctions-api.cloudfunctions.net/app/api/update/',
-  delete: 'https://us-central1-expressjs-cloudfunctions-api.cloudfunctions.net/app/api/delete/'
+  create: 'http://localhost:5000/expressjs-cloudfunctions-api/us-central1/app/api/create',
+  readId: 'http://localhost:5000/expressjs-cloudfunctions-api/us-central1/app/api/read/',
+  readAll: 'http://localhost:5000/expressjs-cloudfunctions-api/us-central1/app/api/read',
+  update: 'http://localhost:5000/expressjs-cloudfunctions-api/us-central1/app/api/update/',
+  delete: 'http://localhost:5000/expressjs-cloudfunctions-api/us-central1/app/api/delete/'
 };
 
 /*

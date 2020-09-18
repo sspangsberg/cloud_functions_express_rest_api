@@ -29,9 +29,7 @@ export class AppComponent {
       console.log(error);
     }
   }
-
-  // really this is create but the flow is that
-  // click the "create item" button which appends a blank value to the array, then click save to actually create it permanently
+  
   async saveProduct(product: any) {
     try {
       console.log(environment.create);
